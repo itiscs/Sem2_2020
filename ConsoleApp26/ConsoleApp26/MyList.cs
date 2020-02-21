@@ -85,6 +85,11 @@ namespace ConsoleApp26
         }
 
 
+        public bool IsSorted()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public override string ToString()
         {
