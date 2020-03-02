@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegApp", "DelegApp\DelegApp.csproj", "{122107B6-A348-4373-ABF4-BB9CF3D2799A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{122107B6-A348-4373-ABF4-BB9CF3D2799A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122107B6-A348-4373-ABF4-BB9CF3D2799A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122107B6-A348-4373-ABF4-BB9CF3D2799A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122107B6-A348-4373-ABF4-BB9CF3D2799A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5FA5ED8-0545-43C5-AF2E-312A16101254}
+	EndGlobalSection
+EndGlobal
