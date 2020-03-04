@@ -17,11 +17,6 @@ namespace LinqApp
             return $"{Id} {Fio} {Age}";
         }
 
-        public static bool Met(Student s)
-        {
-            return s.Age < 20;
-        }
-
     }
 
     class Program
@@ -35,9 +30,11 @@ namespace LinqApp
             lst.Add(new Student() { Id = 4, Fio = "Сидоров", Age = 18 });
 
 
-            var newlst = lst.Where(st => st.Age < 20);
+            var newlst = lst.Skip(2).Where(st => st.Age < 30).OrderByDescending(st => st.Fio);
 
-            foreach (var st in  newlst)
+            //Console.WriteLine(lst.FirstOrDefault(st => st.Age > 50)) ;
+
+            foreach (var st in lst.Select(st => new { st.Fio, st.Age } ) )
             {
                 Console.WriteLine(st);
             }
