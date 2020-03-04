@@ -49,8 +49,9 @@ namespace DelegApp
         {
             ArOper a = new ArOper();
 
-            Oper op = new Oper(ArOper.Sum);
-            
+            //Oper op = new Oper(ArOper.Sum);
+            Func<int, int, int> op = new Func<int, int, int>(ArOper.Sub);
+
             Console.WriteLine(op(5, 3));
 
             //op = ArOper.Sub;
@@ -75,7 +76,8 @@ namespace DelegApp
             Console.WriteLine(op(5, 3));
 
 
-            Hello he = ArOper.Hello1;
+            //Hello he = ArOper.Hello1;
+            Action he = ArOper.Hello1;
             he += ArOper.Hello2;
             he += delegate ()
             {
