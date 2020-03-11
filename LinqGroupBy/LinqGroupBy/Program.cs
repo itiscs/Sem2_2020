@@ -21,8 +21,10 @@ namespace LinqGroupBy
                         MonthsCount = g.Select(f=>f.Month).Distinct().Count()
                     }) ;
 
-            var res = gr.Where(g => g.Sum == gr.Max(k => k.Sum))
-                    .OrderBy(r=> r.Year).Take(1);
+            int max = gr.Max(k => k.Sum);
+
+            var res = gr.Where(g => g.Sum == max)
+                .OrderBy(r=> r.Year).Take(1);
 
 
 
