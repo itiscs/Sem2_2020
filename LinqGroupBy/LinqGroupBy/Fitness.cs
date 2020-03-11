@@ -25,7 +25,7 @@ namespace LinqGroupBy
             lst.Add(new Fitness() { Year = 2020, Month = 1, ClientId = 101, Duration = 20 });
             lst.Add(new Fitness() { Year = 2020, Month = 1, ClientId = 102, Duration = 25 });
             lst.Add(new Fitness() { Year = 2020, Month = 2, ClientId = 103, Duration = 30 });
-            lst.Add(new Fitness() { Year = 2020, Month = 2, ClientId = 101, Duration = 40 });
+            lst.Add(new Fitness() { Year = 2020, Month = 3, ClientId = 101, Duration = 40 });
             lst.Add(new Fitness() { Year = 2020, Month = 3, ClientId = 102, Duration = 15 });
             lst.Add(new Fitness() { Year = 2019, Month = 1, ClientId = 103, Duration = 22 });
             lst.Add(new Fitness() { Year = 2019, Month = 2, ClientId = 101, Duration = 10 });

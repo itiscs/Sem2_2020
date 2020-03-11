@@ -17,15 +17,16 @@ namespace LinqGroupBy
                     new
                     {
                         Year = g.Key,
-                        Sum = g.Sum(f => f.Duration)
-                    });
+                        Sum = g.Sum(f => f.Duration),
+                        MonthsCount = g.Select(f=>f.Month).Distinct().Count()
+                    }) ;
 
             var res = gr.Where(g => g.Sum == gr.Max(k => k.Sum))
                     .OrderBy(r=> r.Year).Take(1);
 
 
 
-            foreach (var g in res)
+            foreach (var g in gr)
             {
                 Console.WriteLine(g);
                 //Console.WriteLine(g.Key);
