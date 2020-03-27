@@ -10,7 +10,7 @@ namespace TreeApp
     {
         static void Main(string[] args)
         {
-            Tree tr = Tree.CreateTree();
+            Tree tr = new Tree("(1,(2,4,5),(3,,6))");
             tr.Show();
             Console.WriteLine($"sum={tr.Sum()}");
             Console.WriteLine($"max={tr.Max()}");

@@ -18,6 +18,42 @@ namespace TreeApp
     {
         private Elem Root { get; set; }
 
+        private Tree()
+        {        
+        }
+
+        public Tree(string str)
+        {
+            // (1 , (2 , 4 , (5 , 8 ,)), (3 , 6 , 7))
+            // (1  (2  4  (5  8  (3  6  7 
+            //
+            int k = 0;
+            Root = Create(str.Split(new char[] { ',', ')' }), ref k);
+
+        }
+
+        private Elem Create(String[] str, ref int k)
+        {
+            Elem t = new Elem();
+            if (!str[k].Contains('('))
+            {
+                t.Info = int.Parse(str[k]);
+            }
+            else
+            {
+                t.Info = int.Parse(str[k].Remove(0, 1));//убрали '(' 
+                k++;
+                if (str[k] != "")
+                    t.Left = Create(str, ref k);
+                k++;
+                if (str[k] != "")
+                    t.Right = Create(str, ref k);
+                k++;
+            }
+            return t;
+        }
+
+
 
         public static Tree CreateTree()
         {
@@ -82,8 +118,8 @@ namespace TreeApp
 
         private int MaxElem(Elem el)
         {
-            if (el.Left == el.Right)
-                return el.Info;
+            //if (el.Left == el.Right)
+            //    return el.Info;
 
             int max = el.Info, ml;
             if(el.Left != null)
