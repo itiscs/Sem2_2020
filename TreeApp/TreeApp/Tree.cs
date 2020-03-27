@@ -26,7 +26,7 @@ namespace TreeApp
         {
             // (1 , (2 , 4 , (5 , 8 ,)), (3 , 6 , 7))
             // (1  (2  4  (5  8  (3  6  7 
-            //
+            
             int k = 0;
             Root = Create(str.Split(new char[] { ',', ')' }), ref k);
 
