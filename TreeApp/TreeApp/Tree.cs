@@ -141,4 +141,122 @@ namespace TreeApp
 
 
     }
+
+    public class SearchTree
+    {
+        private Elem Root { get; set; }
+        public SearchTree(int n)
+        {
+            Random r = new Random();
+            for(int i=0;i<n;i++)
+            {
+                int k = r.Next(100);
+                Console.Write($"{k} ");
+                AddElem(k);
+            }
+            Console.WriteLine();
+        }
+
+        private void AddElem(int k)
+        {
+            if (Root == null)  //дерево пустое
+            {
+                Root = new Elem() { Info = k };
+                return;
+            }
+            Elem el = Root;
+            while(el != null)
+            {
+                if (el.Info == k) //в дереве уже есть k
+                    return;
+                if(el.Info < k) //ушли направо 
+                {
+                    if (el.Right != null)
+                        el = el.Right;
+                    else
+                    {
+                        el.Right = new Elem() { Info = k };
+                        return;
+                    }
+                }
+                if (el.Info > k) //ушли налево
+                {
+                    if (el.Left != null)
+                        el = el.Left;
+                    else
+                    {
+                        el.Left = new Elem() { Info = k };
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        public bool Contains(int x)
+        {
+            Elem el = Root;
+            while(el != null)
+            {
+                if (el.Info == x)
+                    return true;
+                if (el.Info < x)
+                    el = el.Right;
+                else
+                    el = el.Left;
+            }
+            return false;
+
+        }
+
+        public void Show()
+        {
+            ShowElem(Root);
+            Console.WriteLine();
+        }
+
+        private void ShowElem(Elem el)
+        {
+            if (el == null)
+                return;
+            if (el.Left == el.Right)//el.l==null && el.r==null
+            {
+                Console.Write(el.Info);
+                return;
+            }
+            Console.Write($"({el.Info},");
+            ShowElem(el.Left);
+            Console.Write(",");
+            ShowElem(el.Right);
+            Console.Write(")");
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
