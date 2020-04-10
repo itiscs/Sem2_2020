@@ -10,7 +10,8 @@ namespace MyTree
     {
         static void Main(string[] args)
         {
-            MyTree tr = MyTree.CreateTree();
+            //MyTree tr = MyTree.CreateTree();
+            MyTree tr = new MyTree("(145,(23,-4,(56,8,)),(3,6,7))");
             tr.ShowTree();
             Console.WriteLine(tr.Sum());
             Console.WriteLine(tr.Min());

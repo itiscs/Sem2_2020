@@ -42,6 +42,42 @@ namespace MyTree
             };
         }
 
+        public MyTree()
+        {
+            
+        }
+        public MyTree(string str)
+        {
+            // (1,(2,4,(5,8,)),(3,6,7))
+            // (*,(+,4,(/,8,4)),(-,6,7))
+            // (1 (2 4 (5 8 _ _ _ _ (3 6 7 _
+            int k = 0;
+            Root = Create(str.Split(new char[] { ',', ')' }), ref k);
+
+        }
+
+        private Elem Create(String[] str, ref int k)
+        {
+            Elem t = new Elem();
+            if (!str[k].Contains('('))
+            {
+                t.Info = int.Parse(str[k]);
+            }
+            else
+            {
+                t.Info = int.Parse(str[k].Remove(0, 1));//убрали '(' 
+                k++;
+                if (str[k] != "")
+                    t.Left = Create(str, ref k);
+                k++;
+                if (str[k] != "")
+                    t.Right = Create(str, ref k);
+                k++;
+            }
+            return t;
+        }
+
+
         public void ShowTree()
         {
             ShowElem(Root);
