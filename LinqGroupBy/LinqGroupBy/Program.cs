@@ -23,12 +23,19 @@ namespace LinqGroupBy
 
             int max = gr.Max(k => k.Sum);
 
-            var res = gr.Where(g => g.Sum == max)
-                .OrderBy(r=> r.Year).Take(1);
+            //var res = gr.Where(g => g.Sum == max)
+            //    .OrderBy(r=> r.Year).Take(1);
 
+            var res = lst.GroupBy(l => new { l.Year, l.ClientId })
+                .Select(g => new
+                {
+                    g.Key.Year,
+                    g.Key.ClientId,
+                    Count = g.Count(),
+                    Average = g.Average(f => f.Duration)
+                });
 
-
-            foreach (var g in gr)
+            foreach (var g in res)
             {
                 Console.WriteLine(g);
                 //Console.WriteLine(g.Key);
