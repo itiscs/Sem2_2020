@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,25 +20,34 @@ namespace HashTable
 
         private List<Elem>[] mas;
 
-        public MyHashTable(int size)
+        private Func<int, int> hashFunc;
+
+        
+
+        public MyHashTable(int size, Func<int,int> hash)
         {
+            hashFunc = hash;
             Size = size;
             mas = new List<Elem>[Size];
         }
 
         public void Insert(Elem el)
         {
-            var hash = el.Key.GetHashCode() * 1117 % Size; // Func
+            var hash = hashFunc(el.Key) % Size; // Func
             var lst = mas[hash];
             if (lst == null)
-               lst = new List<Elem>();                
+            {
+                lst = new List<Elem>();
+                
+            }
             lst.Add(el);
             mas[hash] = lst;
         }
 
         public Elem GetElem(int key)
         {
-            var hash = key.GetHashCode() * 1117 % Size; // Func
+            var hash = hashFunc(key) % Size; // Func
+
             var lst = mas[hash];
             if (lst == null)
                 throw new KeyNotFoundException();
@@ -60,38 +70,31 @@ namespace HashTable
                 {
                     Console.Write($"{i}--");
                     foreach (var el in lst)
-                        Console.Write($"{el.Key} {el.Key.GetHashCode()} {el.Value} ->");
+                        Console.Write($"{el.Key} {hashFunc(el.Key)} {el.Value} ->");
                     Console.WriteLine();
                 }
             }
         }
 
-
-
-
-
-
+                          
     }
 
-
-
-
-
+         
     class Program
     {
         static void Main(string[] args)
         {
 
-            MyHashTable tbl = new MyHashTable(10);
-            tbl.Insert(new Elem() { Key = 5, Value = "rrrrrrrrrrr" });
-            tbl.Insert(new Elem() { Key = 7, Value = "gggggg" });
-            tbl.Insert(new Elem() { Key = 1, Value = "kkkkkkkkkk" });
+            MyHashTable tbl = new MyHashTable(10, x=>((x*x)%1000)*2153%1000);
+            tbl.Insert(new Elem() { Key = 52, Value = "rrrrrrrrrrr" });
+            tbl.Insert(new Elem() { Key = 73, Value = "gggggg" });
+            tbl.Insert(new Elem() { Key = 16, Value = "kkkkkkkkkk" });
             tbl.Insert(new Elem() { Key = 46, Value = "aaaaaaaa" });
-            tbl.Insert(new Elem() { Key = 333349, Value = "bbbbbbbbbbb" });
+            tbl.Insert(new Elem() { Key = 349, Value = "bbbbbbbbbbb" });
 
             tbl.Show();
 
-            var el = tbl.GetElem(1);
+            var el = tbl.GetElem(349);
             Console.WriteLine($"{el.Key} {el.Value}");
 
 
