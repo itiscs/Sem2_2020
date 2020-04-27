@@ -85,16 +85,18 @@ namespace HashTable
         static void Main(string[] args)
         {
 
-            MyHashTable tbl = new MyHashTable(10, x=>((x*x)%1000)*2153%1000);
+            MyHashTable tbl = new MyHashTable(10, x=>(((x % 1000) * (x % 1000)) 
+                                                        %1000)*2153%1000);
+
             tbl.Insert(new Elem() { Key = 52, Value = "rrrrrrrrrrr" });
             tbl.Insert(new Elem() { Key = 73, Value = "gggggg" });
             tbl.Insert(new Elem() { Key = 16, Value = "kkkkkkkkkk" });
-            tbl.Insert(new Elem() { Key = 46, Value = "aaaaaaaa" });
-            tbl.Insert(new Elem() { Key = 349, Value = "bbbbbbbbbbb" });
+            tbl.Insert(new Elem() { Key = 461, Value = "aaaaaaaa" });
+            tbl.Insert(new Elem() { Key = 33349, Value = "bbbbbbbbbbb" });
 
             tbl.Show();
 
-            var el = tbl.GetElem(349);
+            var el = tbl.GetElem(73);
             Console.WriteLine($"{el.Key} {el.Value}");
 
 
